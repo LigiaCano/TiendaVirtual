@@ -1,0 +1,44 @@
+﻿@model TiendaVirtual.Models.Pedido
+
+<h4>Pedido</h4>
+   
+<table class="table">
+    <tr>
+        <th>
+            @Html.Label("Nº Pedido")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EstadoNombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.EstadoNombre)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Total)
+        </td>
+    </tr>
+    <tr>
+        <th colspan="4" align="center">
+            @Html.Label("Detalle Pedido")
+        </th>
+    </tr>
+    <tr>
+        <td colspan="4">
+            @Html.Action("DetailsPedido", "Pedido", Model)
+        </td>
+    </tr>
+</table>

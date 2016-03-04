@@ -1,0 +1,24 @@
+﻿@using TiendaVirtual.Models;
+@{
+    Login user = (Login)HttpContext.Current.Session["usuario_session"];
+}
+
+@if (!(user== null) && user.Validate)
+{
+    using (Html.BeginForm("LogOff", "Usuario", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                @Html.ActionLink(user.ToString(), "Index", "Home", routeValues: null, htmlAttributes: new { title = "Manage" })
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a></li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Registrarse", "Create", "Usuario", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Iniciar sesión", "Login", "Usuario", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

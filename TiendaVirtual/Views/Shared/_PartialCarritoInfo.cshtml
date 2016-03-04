@@ -1,0 +1,23 @@
+﻿@model IEnumerable<TiendaVirtual.Models.Producto>
+@{
+    int cont = 0;
+    foreach (var item in Model)
+    {
+        cont = cont + item.Cantidad;
+    }
+}
+<table>
+    <tr>
+        <td>
+            <a href='@Url.Action("Show", "Carrito")'>
+                <img src="http://www.audioplus.cl/audiopluswp/wp-content/themes/audioplus/imgs/icon-carro-compra-36.png" />
+                @cont
+            </a> 
+        </td>
+    </tr>
+
+</table>
+
+       
+
+ 

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<TiendaVirtual.Models.Producto>
+@using TiendaVirtual.Models;
+@{
+    ViewBag.Title = "Carrito";
+}
+@{
+    CarritoCompra carrito = (CarritoCompra)Session["carrito_session"];
+}
+
+<h2>Carrito</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Foto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Precio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            <img src="@Html.DisplayFor(modelItem => item.Foto)" width="50" height="50"/> 
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Precio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cantidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+            @carrito.TotalCompra
+        </td>
+        <td>          
+            <a href='@Url.Action("Save", "Pedido")'>
+                <img src="http://paseobebe.com/files/img/howto_pedido.gif" />
+                Confirmar
+            </a>  
+        </td>
+    </tr>
+</table>
+@Html.Raw(TempData["msg"])

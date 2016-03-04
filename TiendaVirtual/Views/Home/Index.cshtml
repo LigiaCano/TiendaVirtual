@@ -1,0 +1,19 @@
+﻿@model IEnumerable<TiendaVirtual.Models.Categoria>
+
+<table class="table">
+
+@foreach (var item in Model) {
+    <tr>
+        <th>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </th>
+      
+    </tr>
+    <tr>
+        <td>
+            @Html.Action("Index", "Producto", item)
+        </td>
+    </tr>
+}
+</table>
+@Html.Raw(TempData["msg"])
